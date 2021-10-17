@@ -1,0 +1,28 @@
+@import "main.less";
+@hover-color: #333;
+
+body, input {
+  font:13px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color:#aaa;
+  background-color:#000;
+}
+
+input[type=button]:hover,
+input[type=reset]:hover,
+input[type=submit]:hover {
+  background-color:@hover-color;
+}
+
+.x:hover {
+  background-color:@hover-color;
+  text-decoration: none;
+  color: #fff;
+}
+
+.date {
+  background-color:@hover-color;
+}
+
+#login-overlay div {
+  background-color:#000;
+}

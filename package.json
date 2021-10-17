@@ -1,0 +1,21 @@
+{
+  "name": "health-records",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./app.js"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-session": "^1.17.2",
+    "hbs": "^4.1.1",
+    "less": "^4.1.1",
+    "morgan": "~1.9.1",
+    "pm2": "^5.0.4",
+    "underscore": "^1.13.1"
+  }
+}

@@ -1,0 +1,86 @@
+
+<h2>Select Profile</h2>
+
+{{#each users}}
+<div class="profile">
+  <a href="javascript:client.login({{this.id}}, {{this.protected}});" class="profile-link">{{this.username}}</a>
+  <a href="javascript:client.edit({{this.id}}, {{this.protected}});">Edit</a>
+</div>
+{{/each}}
+<div class="profile">
+  <a href="javascript:client.edit(0);" class="profile-link">New Profile</a>
+</div>
+
+<div id="edit-profile">
+<form action="/profile" method="post">
+  <input type="hidden" name="id" id="id" />
+  <div>
+    <label for="username" class="label">Name</label><br />
+    <input type="text" name="username" id="username" />
+  </div>
+  <br />
+  <div class="label">Height</div>
+  <div class="input-group">
+    <label for="feet">feet</label>
+    <input type="text" name="feet" id="feet" class="tiny" onkeyup="client.in2m();" />
+  </div>
+  <div class="input-group">
+    <label for="inches">inches</label>
+    <input type="text" name="inches" id="inches" class="tiny"  onkeyup="client.in2m();" />
+  </div>
+  <div class="input-group">
+    <label for="height">meters</label>
+    <input type="text" name="height" id="height" class="tiny"  onkeyup="client.m2in();" />
+  </div>
+  <div class="label">Statistics</div>
+  {{#each fields}}
+  <div class="field-select">
+    <input type="checkbox" name="field-{{this}}" id="field-{{ID this}}" />
+    <label for="field-{{this}}">{{this}}</label>
+  </div>
+  {{/each}}
+  <br />
+  <div class="label">Theme</div>
+  <div class="field-select">
+    <input type="radio" name="theme" value="light" id="light" />
+    <label for="light">light</label>
+  </div>
+  <div class="field-select">
+    <input type="radio" name="theme" value="dark" id="dark" />
+    <label for="dark">dark</label>
+  </div>
+  <br />
+  <div class="label">Profile</div>
+  <div class="field-select">
+    <input type="checkbox" name="persist" id="persist" />
+    <label for="persist">persist</label>
+  </div>
+  <div class="field-select">
+    <input type="checkbox" name="protected" id="protected" onchange="client.togglePassword()"/>
+    <label for="protected">protected</label>
+  </div>
+
+  <div id="password-container">
+    <br />
+    <label for="password" class="label">Password</label><br />
+    <input type="password" name="password" id="password" />
+  </div>
+  <br />
+  <input type="submit" value="Save">
+</form>
+</div>
+
+<div id="login-overlay">
+  <div>
+    <p>This profile is password protected</p>
+    <form method="post" id="login-form" action="/login">
+      <label for="login" class="label">Password</label><br />
+      <input type="hidden" name="user" id="user" />
+      <input type="hidden" name="bounce" id="bounce" />
+      <input type="password" name="login" id="login" /><br />
+      <input type="submit" value="Submit" />
+      <input type="button" value="Cancel" onclick="location='/profile'" />
+    </form>
+    <p id="login-error">Password incorrect</p>
+  </div>
+</div>

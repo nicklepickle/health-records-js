@@ -1,0 +1,25 @@
+
+<h1><a href="/">{{title}}</a></h1>
+<div class="side-nav">
+  <a href="/profile" class="side-link">Change Profile</a>
+  <a href="/records?format=csv" class="side-link">Export</a>
+</div>
+<div id="canvas-container">
+  <h2 id="data-label"></h2>
+  <a href="javascript:$('#canvas-container').hide();" class="x">&times;</a>
+  <div id="data-canvas"></div>
+</div>
+<form method="post" action="/records" id="data-form">
+  <input type="hidden" name="user" id="user" value="{{userId}}" />
+  <input type="hidden" name="id" id="id" value="0" />
+{{#unless desc}}
+  <table id="data-table"></table>
+{{/unless}}
+  <div>
+    <input type="submit" value="Submit" />
+    <input type="button" value="Cancel" id="cancel" onclick="client.renderTable(0)"/>
+  </div>
+{{#if desc}}
+  <table id="data-table"></table>
+{{/if}}
+</form>
