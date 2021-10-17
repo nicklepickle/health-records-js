@@ -1,21 +1,16 @@
-# health-records-pg
+# health-records-js
 
-health-records-pg is a simple web app using NodeJS and Postrges to store and visualize health records.
+health-records-js is a simple web app to store and visualize health records. It is based on health-records-pg which uses a Postgres batabase for the backend. This version is implemented as a pure node app with no external (non-npm) dependencies. It does not support concurrent users due to the use of the default session store.
 
 Plotty.js is used to plot graphs of the daily records.
 
-This application is not intended to be publicly hosted but assumes a network environment of trusted users.
-
-Not included in this repository is the config.js file at the root of the project. This file contains the credentials used to log in to Postgres as well as session and server settings. Below is an example of what this file should contain. Environment variables can be used in place of hard coded values in this file.
+Not included in this repository is the config.js file at the root of the project. Below is an example of what this file should contain. 
 
 ```
 module.exports = {
-  database: { // pg connection values
-    host: 'localhost',
-    user: 'db_user',
-    password: 'db_password',
-    database: 'health',
-    port: 5432
+  data: {
+    root: __dirname + '/data',
+    users: __dirname + '/data/users.json'
   },
   server: {
     approot: __dirname,
@@ -24,7 +19,7 @@ module.exports = {
   session: {
     name: 'session', // name of session cookie
     maxAge: 30 * (24 * 60 * 60 * 1000), // 30 days in ms
-    key: 'session_secret'
+    key: 'x3au15726p'
   }
 };
 ```
